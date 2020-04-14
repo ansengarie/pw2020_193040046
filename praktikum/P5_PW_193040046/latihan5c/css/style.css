@@ -37,3 +37,9 @@ th{
 p .detail{
     font-size: 30px;
 }
+.fixed-footer{
+    margin: 0px auto;
+    position:absolute;
+    bottom:0px;
+    width: 100%;
+}

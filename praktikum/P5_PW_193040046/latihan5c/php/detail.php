@@ -35,27 +35,24 @@ $row = query("SELECT * FROM elektronik WHERE id = $id")[0];
 <!-- /navbar -->
     <div class="container-fluid mt-5 mb-5">
         <div class="row">
-        <div class="col-md-4">
-        <div class="gambar">
-            <img src="../assets/img/<?= $row['foto']; ?>" alt="">
+            <div class="col-md-4">
+                 <div class="gambar">
+                    <img src="../assets/img/<?= $row['foto']; ?>" alt="">
+                 </div>
+             </div>
+            <div class="col-md-8">
+                 <div class="keterangan">
+                    <h1 class="mb-5 mt-4"><?= $row['seri']; ?></h1>
+                    <h4 class="mb-3"><?= $row['spesifikasi']; ?></h4>
+                    <h4 class="mb-3"><?= $row['fitur']; ?></h4>
+                    <h4 class="mb-3">Rp <?= number_format($row['harga'], 0, ',', '.');?></h4>
+                    <a href="../index.php" class="btn btn-primary mt-5">Kembali</a>
+                </div>
+             </div>
         </div>
-        </div>
-        <div class="col-md-8">
-        <div class="keterangan">
-            <h1 class="mb-5 mt-4"><?= $row['seri']; ?></h1>
-            <h4 class="mb-3"><?= $row['spesifikasi']; ?></h4>
-            <h4 class="mb-3"><?= $row['fitur']; ?></h4>
-            <h4 class="mb-3">Rp <?= number_format($row['harga'], 0, ',', '.');?></h4>
-            <a href="../index.php" class="btn btn-primary mt-5">Kembali</a>
-        </div>
-        </div>
-
-        
     </div>
-    </div>
-
 <!-- footer -->
-<footer class="text-white bg-primary mt-5">
+<footer class="text-white bg-secondary mt-5 fixed-footer">
         <div class="container">
             <div class="row pt-4">
                 <div class="col">
@@ -63,7 +60,7 @@ $row = query("SELECT * FROM elektronik WHERE id = $id")[0];
                 </div>
             </div>
         </div>
-    </footer>
+</footer>
 <script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -47,10 +47,10 @@ $elektronik = query("SELECT * FROM elektronik");
 </div>
 
 <!-- footer -->
-<footer class="text-white bg-primary mt-5">
+<footer class="text-white bg-secondary mt-5">
         <div class="container">
             <div class="row pt-4">
-                <div class="col text-center">
+                <div class="col text-left">
                     <p>Copyright 2019.</p>
                 </div>
             </div>
