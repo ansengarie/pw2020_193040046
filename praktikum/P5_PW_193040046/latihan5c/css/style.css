@@ -21,11 +21,19 @@ th{
 }
 
 #footer{
-    margin-top: -20px;
+    bottom: 0;
     width: 100%;
     height: 50px;
     padding-left: 10px;
     line-height: 50px;
     background: grey;
     color: #fff;
+}
+
+.max-foto{
+    max-height: 180px !important;
+}
+
+p .detail{
+    font-size: 30px;
 }

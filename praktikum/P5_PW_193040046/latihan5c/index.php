@@ -26,12 +26,14 @@ $elektronik = query("SELECT * FROM elektronik");
       Do bigger things with Galaxy.
   </p>
 </nav>
-<div class="container">
+<!-- /navbar -->
+<div class="container-fluid">
 <div class="row">
 <?php foreach($elektronik as $row) : ?>
+    <div class="col-md-4">
     <p class="nama">
-            <div class="card mt-3 mr-3 mb-3 ml-3" style="width: 18rem;">
-        <img class="card-img-top" src="assets/img/<?= $row['foto']; ?>" alt="Card image cap">
+            <div class="card mt-3  mb-4 ml-5" style="width: 18rem;">
+        <img class="card img-fluid max-foto" src="assets/img/<?= $row['foto']; ?>" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title"><?= $row['seri']; ?></h5>
             <a href="php/detail.php?id=<?= $row['id']; ?>" class="btn btn-primary">Detail</a>
@@ -39,14 +41,21 @@ $elektronik = query("SELECT * FROM elektronik");
         </div>
         
     </p>
+    </div>
 <?php endforeach; ?>
 </div>
 </div>
 
 <!-- footer -->
-    <div id="footer">
-        Copyright &copy; 2020
-    </div>
+<footer class="text-white bg-primary mt-5">
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col text-center">
+                    <p>Copyright 2019.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 <script>
