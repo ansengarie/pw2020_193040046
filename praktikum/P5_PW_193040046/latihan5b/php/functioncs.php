@@ -20,5 +20,3 @@ function query($sql){
     return $rows;
 
 }
-
-?>
