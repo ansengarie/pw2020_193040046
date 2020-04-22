@@ -29,6 +29,9 @@ if (isset($_POST['tambah'])) {
     <a class="navbar-brand" href="#">
       Form Tambah Daftar Mahasiswa
     </a>
+    <p>
+      <a href="latihan3.php" class="btn btn-primary mt-2">Kembali</a>
+    </p>
   </nav>
 
 
@@ -63,7 +66,10 @@ if (isset($_POST['tambah'])) {
         <input type="text" name="gambar" class="form-control" required>
       </label>
     </div>
-    <button type="submit" name="tambah" class="btn btn-primary">Tambah Data!</button>
+    <div class="form-group">
+      <button type="submit" name="tambah" class="btn btn-success">Tambah Data!</button>
+      <button type="reset" name="reset" class="btn btn-danger">Reset</button>
+    </div>
   </form>
 </body>
 
