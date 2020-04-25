@@ -1,8 +1,23 @@
 <?php
-
 require 'functioncs.php';
 
-$elektronik = query("SELECT * FROM elektronik");
+$row = query("SELECT * FROM elektronik");
+
+if (isset($_GET['cari'])) {
+    $keyword = $_GET['keyword'];
+    $elektronik = query("SELECT * FROM elektronik WHERE 
+                        foto LIKE '%$keyword%' OR
+                        seri LIKE '%$keyword%' OR
+                        spesifikasi LIKE '%$keyword%' OR 
+                        fitur LIKE '%$keyword%' OR
+                        harga LIKE '%$keyword%' ");
+} else if (isset($_GET['refresh'])) {
+    echo "<script>
+    document.location.href = 'admin.php';
+    </script>";
+} else {
+    $elektronik = query("SELECT * FROM elektronik");
+}
 
 ?>
 
@@ -31,6 +46,10 @@ $elektronik = query("SELECT * FROM elektronik");
     </nav>
     <!-- /navbar -->
     <a href="tambah.php" class="btn btn-primary mt-2 mb-2">Tambah Data</a>
+    <form action="" method="GET" class="mt-2 mb-2">
+        <input type="text" name="keyword" autofocus>
+        <button type="submit" name="cari">Cari!</button>
+    </form>
     <div class="table-responsive">
         <table border="1" cellpadding="13" cellspacing="0" class="table">
             <tr>
@@ -42,22 +61,30 @@ $elektronik = query("SELECT * FROM elektronik");
                 <th width="300px">Fitur</th>
                 <th width="200px">Harga</th>
             </tr>
-            <?php $i = 1; ?>
-            <?php foreach ($elektronik as $row) : ?>
+            <?php if (empty($elektronik)) : ?>
                 <tr>
-                    <td><?= $i; ?></td>
-                    <td>
-                        <a href="ubah.php?id=<?= $row['id']; ?>" class="btn btn-primary">Ubah</a>
-                        <a href="hapus.php?id=<?= $row['id']; ?>" onclick="return confirm('Hapus Data?')" class="btn btn-danger">Hapus</a>
+                    <td colspan="7">
+                        <h1>Data tidak ditemukan</h1>
                     </td>
-                    <td><img src="../assets/img/<?= $row['foto']; ?>" alt="" class="img-fluid"></td>
-                    <td><?= $row['seri']; ?></td>
-                    <td><?= $row['spesifikasi']; ?></td>
-                    <td><?= $row['fitur']; ?></td>
-                    <td>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></td>
                 </tr>
-                <?php $i++; ?>
-            <?php endforeach; ?>
+            <?php else : ?>
+                <?php $i = 1; ?>
+                <?php foreach ($elektronik as $row) : ?>
+                    <tr>
+                        <td><?= $i; ?></td>
+                        <td>
+                            <a href="ubah.php?id=<?= $row['id']; ?>" class="btn btn-primary">Ubah</a>
+                            <a href="hapus.php?id=<?= $row['id']; ?>" onclick="return confirm('Hapus Data?')" class="btn btn-danger">Hapus</a>
+                        </td>
+                        <td><img src="../assets/img/<?= $row['foto']; ?>" alt="" class="img-fluid"></td>
+                        <td><?= $row['seri']; ?></td>
+                        <td><?= $row['spesifikasi']; ?></td>
+                        <td><?= $row['fitur']; ?></td>
+                        <td>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></td>
+                    </tr>
+                    <?php $i++; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </table>
     </div>
 
