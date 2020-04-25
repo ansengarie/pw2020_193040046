@@ -1,8 +1,23 @@
 <?php
-
 require 'php/functioncs.php';
 
-$elektronik = query("SELECT * FROM elektronik");
+$row = query("SELECT * FROM elektronik");
+
+if (isset($_GET['cari'])) {
+    $keyword = $_GET['keyword'];
+    $elektronik = query("SELECT * FROM elektronik WHERE 
+                        foto LIKE '%$keyword%' OR
+                        seri LIKE '%$keyword%' OR
+                        spesifikasi LIKE '%$keyword%' OR 
+                        fitur LIKE '%$keyword%' OR
+                        harga LIKE '%$keyword%' ");
+} else if (isset($_GET['refresh'])) {
+    echo "<script>
+    document.location.href = 'admin.php';
+    </script>";
+} else {
+    $elektronik = query("SELECT * FROM elektronik");
+}
 
 ?>
 
@@ -27,26 +42,41 @@ $elektronik = query("SELECT * FROM elektronik");
         <p>
             Do bigger things with Galaxy.
         </p>
+        <a class="navbar-brand" href="php/admin.php">
+            <img src="assets/img/admin.png" class="d-inline-block align-top banner" alt="Admin" placeholder="Admin">
+        </a>
     </nav>
     <!-- /navbar -->
-    <div class="container-fluid">
-        <div class="row">
-            <?php foreach ($elektronik as $row) : ?>
-                <div class="col-md-4">
-                    <p class="nama">
-                        <div class="card mt-3  mb-4 ml-5" style="width: 18rem;">
-                            <img class="card img-fluid max-foto" src="assets/img/<?= $row['foto']; ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $row['seri']; ?></h5>
-                                <a href="php/detail.php?id=<?= $row['id']; ?>" class="btn btn-primary">Detail</a>
+    <form action="" method="GET" class="mt-2 mb-2 ml-5">
+        <input type="text" name="keyword" autofocus>
+        <button type="submit" name="cari">Cari!</button>
+    </form>
+    <?php if (empty($elektronik)) : ?>
+        <tr>
+            <td colspan="7">
+                <h1>Data tidak ditemukan</h1>
+            </td>
+        </tr>
+    <?php else : ?>
+        <div class="container-fluid">
+            <div class="row">
+                <?php foreach ($elektronik as $row) : ?>
+                    <div class="col-md-4">
+                        <p class="nama">
+                            <div class="card mt-3  mb-4 ml-5" style="width: 18rem;">
+                                <img class="card img-fluid max-foto" src="assets/img/<?= $row['foto']; ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $row['seri']; ?></h5>
+                                    <a href="php/detail.php?id=<?= $row['id']; ?>" class="btn btn-primary">Detail</a>
+                                </div>
                             </div>
-                        </div>
 
-                    </p>
-                </div>
-            <?php endforeach; ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
 
     <!-- footer -->
     <footer class="text-white bg-secondary mt-5">
