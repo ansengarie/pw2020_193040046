@@ -48,3 +48,25 @@ function hapus($id)
 
     return mysqli_affected_rows($conn);
 }
+
+function ubah($data)
+{
+    $conn = koneksi();
+
+    $id = $data['id'];
+    $foto = htmlspecialchars($data['foto']);
+    $seri = htmlspecialchars($data['seri']);
+    $spesifikasi = htmlspecialchars($data['spesifikasi']);
+    $fitur = htmlspecialchars($data['fitur']);
+    $harga = htmlspecialchars($data['harga']);
+
+    $queryubah = "UPDATE elektronik SET
+                foto = '$foto',
+                seri = '$seri',
+                spesifikasi = '$spesifikasi',
+                fitur = '$fitur',
+                harga = '$harga'
+                WHERE id = '$id' ";
+    mysqli_query($conn, $queryubah);
+    return mysqli_affected_rows($conn);
+}

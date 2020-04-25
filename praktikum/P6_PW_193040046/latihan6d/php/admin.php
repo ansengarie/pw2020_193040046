@@ -47,7 +47,7 @@ $elektronik = query("SELECT * FROM elektronik");
                 <tr>
                     <td><?= $i; ?></td>
                     <td>
-                        <a href="" class="btn btn-primary">Ubah</a>
+                        <a href="ubah.php?id=<?= $row['id']; ?>" class="btn btn-primary">Ubah</a>
                         <a href="hapus.php?id=<?= $row['id']; ?>" onclick="return confirm('Hapus Data?')" class="btn btn-danger">Hapus</a>
                     </td>
                     <td><img src="../assets/img/<?= $row['foto']; ?>" alt="" class="img-fluid"></td>
