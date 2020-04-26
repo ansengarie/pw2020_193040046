@@ -37,7 +37,7 @@ if (isset($_GET['cari'])) {
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href="../index.php">
             <img src="../assets/img/banner.png" class="d-inline-block align-top banner" alt="">
         </a>
         <p>
