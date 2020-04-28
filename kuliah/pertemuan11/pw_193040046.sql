@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2020 at 06:09 PM
+-- Generation Time: Apr 29, 2020 at 12:56 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -52,7 +52,9 @@ INSERT INTO `mahasiswa` (`id`, `nrp`, `nama`, `email`, `jurusan`, `gambar`) VALU
 (8, '193040069', 'Agam Febriansyah', 'agamfeb@gmail.com', 'Teknik Informatika', '193040069.jpg'),
 (9, '193040058', 'Bayu Cucan Herdian', 'bayucucan@gmail.com', 'Teknik Informatika', '193040058.jpg'),
 (10, '193040042', 'Suhendani', 'suhendaniaja@gmail.com', 'Teknik Informatika', '193040042.jpg'),
-(11, '193040055', 'Devi Ayu Lestari', '193040055@mail.unpas.ac.id', 'Teknik Informatika', '193040055.jpg');
+(11, '193040055', 'Devi Ayu Lestari', '193040055@mail.unpas.ac.id', 'Teknik Informatika', '193040055.jpg'),
+(13, '193040050', 'Salsabila Nada Adzani', '193040050@mail.unpas.ac.id', 'Teknik Informatika', '193040050.jpg'),
+(21, '193040054', 'Aldi Ageng', 'aldiageng@gmail.com', 'Teknik Informatika', '193040054.jpg');
 
 --
 -- Indexes for dumped tables
@@ -72,7 +74,7 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
