@@ -1,6 +1,11 @@
 <?php
 require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
+
+if (isset($_POST['cari'])) {
+  $mahasiswa = cari($_POST['keyword']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +30,18 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
     </p>
   </nav>
 
+  <form action="" method="POST" class="mt-2 mb-2 ml-5">
+    <input type="text" name="keyword" placeholder="Masukkan keyword pencarian" autofocus autocomplete="off">
+    <button type="submit" name="cari">Cari!</button>
+  </form>
 
+  <div class="row">
+    <?php if (empty($mahasiswa)) : ?>
+      <div class="col-md-12">
+        <h1 class="text-center">Data mahasiswa tidak ditemukan!</h3>
+      </div>
+    <?php endif; ?>
+  </div>
 
   <div class="container-fluid">
     <div class="row">
@@ -51,7 +67,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
     <div class="container">
       <div class="row pt-4">
         <div class="col text-left">
-          <p>Copyright 2019.</p>
+          <p>Copyright 2020.</p>
         </div>
       </div>
     </div>
