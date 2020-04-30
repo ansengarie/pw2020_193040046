@@ -43,6 +43,9 @@ if (isset($_GET['cari'])) {
         <p>
             Do bigger things with Galaxy.
         </p>
+        <p>
+            <a href="logout.php" class="btn btn-danger mt-2">Logout</a>
+        </p>
     </nav>
     <!-- /navbar -->
     <a href="tambah.php" class="btn btn-primary mt-2 mb-2">Tambah Data</a>

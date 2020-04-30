@@ -42,7 +42,7 @@ if (isset($_GET['cari'])) {
         <p>
             Do bigger things with Galaxy.
         </p>
-        <a class="navbar-brand" href="php/admin.php">
+        <a class="navbar-brand" href="php/login.php">
             <img src="assets/img/admin.png" class="d-inline-block align-top banner" alt="Admin" placeholder="Admin">
         </a>
     </nav>
