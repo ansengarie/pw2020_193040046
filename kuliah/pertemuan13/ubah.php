@@ -50,7 +50,7 @@ if (isset($_POST['ubah'])) {
   </nav>
 
 
-  <form action="" method="POST" class="ml-5 mt-3">
+  <form action="" method="POST" enctype="multipart/form-data" class="ml-5 mt-3">
     <div class="form-group">
       <label>
         Id :
@@ -82,16 +82,20 @@ if (isset($_POST['ubah'])) {
       </label>
     </div>
     <div class="form-group">
+      <input type="hidden" name="gambar_lama" value="<?= $mhs['gambar']; ?>">
       <label>
         Gambar :
-        <input type="text" name="gambar" class="form-control" required value="<?= $mhs['gambar']; ?>">
+        <input type="file" name="gambar" class="gambar" onchange="previewImage()">
       </label>
+      <img src="img/<?= $mhs['gambar']; ?>" width="120" style="display: block;" class="img-preview">
     </div>
     <div class="form-group">
       <button type="submit" name="ubah" class="btn btn-success">Ubah Data!</button>
       <button type="reset" name="reset" class="btn btn-danger">Reset</button>
     </div>
   </form>
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>
