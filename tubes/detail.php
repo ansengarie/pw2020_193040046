@@ -1,12 +1,9 @@
 <?php
 require 'php/functions.php';
 
-$elektronik = query("SELECT * FROM elektronik");
+$id = $_GET['id'];
 
-if (isset($_POST['cari'])) {
-  $elektronik = cari($_POST['keyword']);
-}
-
+$row = query("SELECT * FROM elektronik WHERE id = $id");
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +25,7 @@ if (isset($_POST['cari'])) {
   <link rel="stylesheet" href="css/Lightbox-Gallery.css">
   <link rel="stylesheet" href="css/Navigation-with-Search.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     html {
       scroll-behavior: smooth;
@@ -57,56 +55,41 @@ if (isset($_POST['cari'])) {
       </div>
     </div>
   </nav>
-  <div class="photo-gallery">
-    <div class="container">
-      <div class="intro">
-        <h2 class="text-center mb-5">Selamat Datang</h2>
-        <img src="assets/img/croods.png" class="img-fluid mt-5 mb-5" alt="">
+  <div>
+    <div class="container mb-5">
+      <div class="row">
+        <div class="col">
+          <img src="assets/img/<?= $row['foto']; ?>" alt="" class="img-fluid mx-auto d-block">
+        </div>
       </div>
-      <div class="intro">
-        <h2 class="text-center mt-5" id="Produk">Produk</h2>
-      </div>
-
-      <div>
-        <ul class="nav nav-tabs">
-          <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Handphone</a></li>
-          <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Laptop</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="row">
-            <?php if (empty($elektronik)) : ?>
-              <div class="col-md-12">
-                <h1 class="text-center">Data produk tidak ditemukan!</h3>
-              </div>
-            <?php endif; ?>
-          </div>
-          <div class="tab-pane active" role="tabpanel" id="tab-1">
-            <div class="card-group">
-              <div class="container-fluid">
-                <div class="row">
-                  <?php foreach ($elektronik as $row) : ?>
-                    <div class="col-md-4">
-                      <div class="card mt-3">
-                        <img class="card-img-top img-fluid max-foto" src="assets/img/<?= $row['foto']; ?>" style="max-height: 200px; min-height: 200px;">
-                        <div class="card-body">
-                          <h4 class="card-title"><?= $row['seri']; ?></h4>
-                          <a href="detail.php?id=<?= $row['id']; ?>" class="btn btn-primary">Detail</a>
-                        </div>
-                      </div>
-                    </div>
-                  <?php endforeach; ?>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" role="tabpanel" id="tab-2">
-
-          </div>
+      <div class="row">
+        <div class="col">
+          <h1 class="mb-5"><?= $row['seri']; ?></h1>
+          <h3><?= $row['spesifikasi']; ?></h3>
+          <h3><?= $row['fitur']; ?></h3>
+          <h3>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></h3>
+          <a href="index.php" class="btn btn-primary mt-3">Kembali</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="footer-dark mt-3" style="background-color: rgb(150,0,0);">
+  <!-- <div class="row">
+    <div class="col-md-4">
+      <div class="gambar">
+        <img src="assets/img/<?= $row['foto']; ?>" alt="">
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="keterangan">
+        <h1 class="mb-5 mt-4"><?= $row['seri']; ?></h1>
+        <h4 class="mb-3"><?= $row['spesifikasi']; ?></h4>
+        <h4 class="mb-3"><?= $row['fitur']; ?></h4>
+        <h4 class="mb-3">Rp <?= number_format($row['harga'], 0, ',', '.'); ?></h4>
+        <a href="../index.php" class="btn btn-primary mt-5">Kembali</a>
+      </div>
+    </div>
+  </div> -->
+  <div class="footer-dark mt-5" style="background-color: rgb(150,0,0);">
     <footer>
       <div class="container">
         <div class="row">
