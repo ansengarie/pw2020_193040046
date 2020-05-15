@@ -19,7 +19,8 @@ if (isset($_POST['registrasi'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>register</title>
+  <title>Registrasi</title>
+  <link rel="shortcut icon" href="../assets/img/regis.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/Footer-Basic.css">
   <link rel="stylesheet" href="../css/Registration-Form-with-Photo.css">
@@ -46,7 +47,7 @@ if (isset($_POST['registrasi'])) {
           <input class="form-control" type="password" name="password2" id="password2" style="background-color: rgb(255,255,255);" required>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-block" data-bs-hover-animate="pulse" name="registrasi" type="submit" style="background-color: rgb(255,0,53);">Register</button>
+          <button class="btn btn-primary btn-block" data-bs-hover-animate="pulse" name="registrasi" type="submit" style="background-color: rgb(255,0,53);">Registrasi</button>
         </div>
         <a class="already" href="login.php">Sudah punya akun? Login disini.</a>
       </form>
