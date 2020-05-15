@@ -1,12 +1,8 @@
 <?php
-require 'php/functions.php';
 
-$elektronik = query("SELECT * FROM elektronik");
+require '../php/functions.php';
 
-if (isset($_POST['cari'])) {
-  $elektronik = cari($_POST['keyword']);
-}
-
+$elektronik = cari($_GET['keyword']);
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +11,7 @@ if (isset($_POST['cari'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Jee Elektronik</title>
-  <link rel="shortcut icon" href="assets/img/logo.png">
+  <title>Index</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
@@ -66,20 +61,19 @@ if (isset($_POST['cari'])) {
       <div class="intro">
         <h2 class="text-center mt-5" id="Produk">Produk</h2>
       </div>
-
+      <div class="row">
+        <?php if (empty($elektronik)) : ?>
+          <div class="col-md-12">
+            <h1 class="text-center">Data mahasiswa tidak ditemukan!</h3>
+          </div>
+        <?php endif; ?>
+      </div>
       <div>
         <ul class="nav nav-tabs">
           <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Handphone</a></li>
           <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Laptop</a></li>
         </ul>
         <div class="tab-content">
-          <div class="row">
-            <?php if (empty($elektronik)) : ?>
-              <div class="col-md-12">
-                <h1 class="text-center">Data produk tidak ditemukan!</h3>
-              </div>
-            <?php endif; ?>
-          </div>
           <div class="tab-pane active" role="tabpanel" id="tab-1">
             <div class="card-group">
               <div class="container-fluid">
