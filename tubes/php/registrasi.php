@@ -26,10 +26,10 @@ if (isset($_POST['registrasi'])) {
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body style="height: 777px;">
-  <div class="register-photo" style="height: 800;">
+<body style="height: 700px;">
+  <div class="register-photo" style="height: 700;">
     <div class="form-container">
-      <form method="post" style="height: 460px;">
+      <form method="post" style="height: 400px;">
         <h2 class="text-center" style="font-family: Allerta, sans-serif;color: rgb(255,0,0);">
           <strong>Buat </strong>akun
         </h2>
