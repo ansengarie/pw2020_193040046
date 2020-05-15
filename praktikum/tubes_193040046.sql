@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2020 at 12:28 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Waktu pembuatan: 15 Bulan Mei 2020 pada 19.58
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `elektronik`
+-- Struktur dari tabel `elektronik`
 --
 
 CREATE TABLE `elektronik` (
@@ -38,7 +38,7 @@ CREATE TABLE `elektronik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `elektronik`
+-- Dumping data untuk tabel `elektronik`
 --
 
 INSERT INTO `elektronik` (`id`, `foto`, `seri`, `spesifikasi`, `fitur`, `harga`) VALUES
@@ -54,25 +54,58 @@ INSERT INTO `elektronik` (`id`, `foto`, `seri`, `spesifikasi`, `fitur`, `harga`)
 (10, '10.png', 'Galaxy M30S', 'RAM 4 GB, ROM 64 GB', 'Finger Print,\r\nFace Recognition,\r\nLong Battery 6000 mAH', 3299000),
 (11, '1a.png', 'Galaxy M31', 'RAM 8GB, ROM 128 GB', 'Finger Print, Face Recognition, Long Battery 6000 mAH, Fast Charging', 3999000);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(4, 'aji', '$2y$10$USuZaoOssMwJjYGNujSjPeHj.8.YWRCYiaqkqK7GNLMd0g7hfR19q'),
+(6, 'admin1', '$2y$10$CU8dyDkPC3zHDs0/a4YmfuyKA5wTGNyEXFAVhFPJBvWodwen4YUVu'),
+(7, 'admin', '$2y$10$c70xsFEwUxCcGyy9Ue4/Oe83RMpGSBO3bx28lhfMnNp9n4gXSzYDy');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `elektronik`
+-- Indeks untuk tabel `elektronik`
 --
 ALTER TABLE `elektronik`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `elektronik`
+-- AUTO_INCREMENT untuk tabel `elektronik`
 --
 ALTER TABLE `elektronik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
