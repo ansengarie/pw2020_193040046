@@ -13,15 +13,22 @@
 </head>
 
 <body id="page-top">
-  <audio src="assets/audio/lofi.mpeg" autoplay="autoplay" hidden="hidden"></audio>
+  <audio src="assets/audio/lofi.mpeg" autoplay="true" hidden="hidden"></audio>
   <header class="d-flex masthead" style="background-image:url('assets/img/bg-masthead.jpg');">
     <div class="container my-auto text-center">
       <h1 class="mb-1">Aji Nuansa Sengarie</h1>
       <h3 class="mb-5"><em>193040046</em></h3>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" role="button" href="#services">Find Out More</a>
+      <div class="overlay"></div>
+    </div>
+  </header>
+  <section id="services" class="content-section bg-primary text-white text-center">
+    <div class="container my-auto text-center">
+      <h1 class="mb-5">Silahkan Akses</h1>
       <div class="row">
         <div class="col-md-4 col-xs-12 mb-1">
           <div class="dropdown">
-            <button class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+            <button class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
               type="button">Kuliah </button>
             <div class="dropdown-menu" role="menu">
               <a class="dropdown-item" role="presentation" href="kuliah/pertemuan9/">Pertemuan 9</a>
@@ -34,7 +41,7 @@
         </div>
         <div class="col-md-4 col-xs-12 mb-1 mt-1">
           <div class="dropdown">
-            <button class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+            <button class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
               type="button">Praktikum </button>
             <div class="dropdown-menu" role="menu">
               <a class="dropdown-item" role="presentation" href="praktikum/P5_PW_193040046/">Modul 5</a>
@@ -44,11 +51,52 @@
           </div>
         </div>
         <div class="col-md-4 col-xs-12 mb-1 mt-1">
-          <a href="tubes/index.php" button type="button" class="btn btn-lg btn-primary">Tugas Besar</a>
+          <a href="tubes/index.php" button type="button" class="btn btn-lg btn-info">Tugas Besar</a>
         </div>
       </div>
     </div>
-  </header>
+  </section>
+  <section class="mt-5">
+    <div class="container">
+      <div class="span3 well">
+        <center>
+          <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+            <img src="assets/img/193040046.jpg" name="aboutme" style="border-radius: 50%;"></a>
+          <h3 class="mt-2">Aji Nuansa Sengarie</h3>
+          <em class="mt-2">click my photo for more</em>
+        </center>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+              <h4 class="modal-title" id="myModalLabel">More About Aji</h4>
+            </div>
+            <div class="modal-body">
+              <center>
+                <img src="assets/img/193040046.jpg" name="aboutme" class="img-circle"></a>
+                <h3 class="media-heading">Aji Nuansa Sengarie</h3>
+              </center>
+              <hr>
+              <center>
+                <p class="text-left"><strong>Bio: </strong><br>
+                  Saya adalah mahasiswa dari Universitas Pasundan Jurusan Teknik Informatika angkatan 2019.</p>
+                <br>
+              </center>
+            </div>
+            <div class="modal-footer">
+              <center>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cukup kenalan nya</button>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <footer class="footer text-center" style="height: 100px;">
     <div class="container">
       <ul class="list-inline mb-5">
