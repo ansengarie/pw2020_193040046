@@ -27,8 +27,8 @@ if (isset($_POST['registrasi'])) {
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body style="height: 700px;">
-  <div class="register-photo" style="height: 700;">
+<body style="height: 750px;">
+  <div class="register-photo" style="height: 690px;">
     <div class="form-container">
       <form method="post" style="height: 400px;">
         <h2 class="text-center" style="font-family: Allerta, sans-serif;color: rgb(255,0,0);">
@@ -55,7 +55,7 @@ if (isset($_POST['registrasi'])) {
   </div>
   <div class="footer-basic" style="background-color: rgb(241,247,252);height: 150px;">
     <footer>
-      <p class="copyright mt-5" style="margin-top: 58px;">Jee Elektronik © 2020</p>
+      <p class="copyright mt-5" style="margin-top: 68px;">Jee Elektronik © 2020</p>
     </footer>
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

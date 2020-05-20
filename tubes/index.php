@@ -18,7 +18,6 @@ if (isset($_POST['cari'])) {
   <title>Jee Elektronik</title>
   <link rel="shortcut icon" href="assets/img/logo.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
   <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
   <link rel="stylesheet" href="css/Brands.css">
@@ -27,6 +26,7 @@ if (isset($_POST['cari'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
   <link rel="stylesheet" href="css/Lightbox-Gallery.css">
   <link rel="stylesheet" href="css/Navigation-with-Search.css">
+  <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <style>
     html {
@@ -35,24 +35,40 @@ if (isset($_POST['cari'])) {
   </style>
 </head>
 
-<body>
+<body id="page-top">
   <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" id="page-top">
-    <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/logo.png" width="100px" alt=""></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+    <div class="container">
+      <a class="navbar-brand" href="index.php">
+        <img src="assets/img/logo.png" width="100px" alt="">
+      </a>
+      <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="nav navbar-nav">
-          <li class="nav-item" role="presentation"><a class="nav-link" href="#Produk">Produk</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="#">Contact Us</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href=" #Produk">Produk</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href=" about.php">About</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href=" contact.php">Contact Us</a></li>
         </ul>
         <form action="" method="POST" class="form-inline mr-auto" target="_self">
           <div class="form-group">
             <label for="search-field">
               <i class="fa fa-search"></i>
             </label>
-            <input class="form-control search-field" type="text" id="search-field" name="keyword">
+            <input class="form-control search-field" type="text" id="search-field" name="keyword" autocomplete="off" placeholder="Masukkan keyword ...">
             <button type="submit" name="cari" class="tombol-cari">Cari!</button>
           </div>
         </form>
+        <!-- <form action="" method="POST" class="form-inline mr-auto">
+          <div class="form-group">
+            <label for="search-field">
+              <i class="fa fa-search"></i>
+            </label>
+            <input type=" text" class="form-control search-field keyword" name="keyword" id="search-field" placeholder="Masukkan keyword pencarian" autofocus autocomplete="off">
+            <button type="submit" name="cari" class="tombol-cari">Cari!</button>
+          </div>
+        </form> -->
         <a class="btn btn-light action-button" role="button" data-bs-hover-animate="pulse" href="php/login.php" style="background-color: rgb(255,0,0);">Login</a>
       </div>
     </div>
@@ -64,10 +80,10 @@ if (isset($_POST['cari'])) {
         <img src="assets/img/croods.png" class="img-fluid mt-5 mb-5" alt="">
       </div>
       <div class="intro">
-        <h2 class="text-center mt-5" id="Produk">Produk</h2>
+        <h2 class="text-center" id="Produk" style="margin-top: 110px">Produk</h2>
       </div>
 
-      <div>
+      <div class="container">
         <ul class="nav nav-tabs">
           <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Handphone</a></li>
           <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Laptop</a></li>
@@ -86,11 +102,11 @@ if (isset($_POST['cari'])) {
                 <div class="row">
                   <?php foreach ($elektronik as $row) : ?>
                     <div class="col-md-4">
-                      <div class="card mt-3">
+                      <div class="card shadow mt-3">
                         <img class="card-img-top img-fluid max-foto" src="assets/img/<?= $row['foto']; ?>" style="max-height: 200px; min-height: 200px;">
                         <div class="card-body">
                           <h4 class="card-title"><?= $row['seri']; ?></h4>
-                          <a href="detail.php?id=<?= $row['id']; ?>" class="btn btn-primary">Detail</a>
+                          <a href="php/detail.php?id=<?= $row['id']; ?>" class="btn btn-primary">Detail</a>
                         </div>
                       </div>
                     </div>
@@ -100,7 +116,7 @@ if (isset($_POST['cari'])) {
             </div>
           </div>
           <div class="tab-pane" role="tabpanel" id="tab-2">
-
+            <h1 class="text-center mt-5 mb-5">Produk Belum Tersedia!</h1>
           </div>
         </div>
       </div>
@@ -118,7 +134,7 @@ if (isset($_POST['cari'])) {
               <i class="icon ion-social-twitter"></i>
             </a>
             <a href="#">
-              <i class="icon ion-social-snapchat"></i>
+              <i class="icon ion-social-whatsapp"></i>
             </a>
             <a href="#"><i class="icon ion-social-instagram"></i>
             </a>

@@ -7,7 +7,7 @@ tombolCari.style.display = 'none';
 
 
 // event ketika menuliskan keyword
-keyword.addEventListener('keyup', function () {
+keyword.addEventListener('keydown', function () {
   //ajax
 
 
@@ -31,11 +31,11 @@ keyword.addEventListener('keyup', function () {
 
 // preview image untuk tambah dan ubah
 function previewImage() {
-  const gambar = document.querySelector('.gambar');
+  const foto = document.querySelector('.foto');
   const imgPreview = document.querySelector('.img-preview');
 
   const oFReader = new FileReader();
-  oFReader.readAsDataURL(gambar.files[0]);
+  oFReader.readAsDataURL(foto.files[0]);
 
   oFReader.onload = function (oFREvent) {
     imgPreview.src = oFREvent.target.result;

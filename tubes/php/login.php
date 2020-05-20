@@ -1,12 +1,58 @@
 <?php
 
+session_start();
+
 require 'functions.php';
 
-// ketika tombol login ditekan
-if (isset($_POST['login'])) {
-  $login = login($_POST);
+//cek cookie
+if (isset($_COOKIE['username']) && isset($_COOKIE['hash'])) {
+  $username = $_COOKIE['username'];
+  $hash = $_COOKIE['hash'];
+
+  //ambil berdasarkan id
+  $result = mysqli_query(koneksi(), "SELECT * FROM user WHERE username = '$username' ");
+  $row = mysqli_fetch_assoc($result);
+
+  //cek cookie dan username
+  if ($hash === hash('sha255', $row['id'], false)) {
+    $_SESSION['username'] = $row['username'];
+    header("Location: admin.php");
+    exit;
+  }
 }
 
+//melakukan pengecekan apkah user sudah melakukan login jika sudah redirect ke halaman admin
+if (isset($_SESSION['username'])) {
+  header("Location: admin.php");
+  exit;
+}
+
+if (isset($_POST['submit'])) {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $cek_user = mysqli_query(koneksi(), "SELECT * FROM user WHERE username = '$username'");
+  //mencocokkan username dan password
+  if (mysqli_num_rows($cek_user) > 0) {
+    $row = mysqli_fetch_assoc($cek_user);
+    if (password_verify($password, $row['password'])) {
+      $_SESSION['username'] = $_POST['username'];
+      $_SESSION['hash'] = hash('sha255', $row['id'], false);
+      //jika remember me decentang
+      if (isset($_POST['remember'])) {
+        setcookie('username', $row['username'], time() + 60 * 60 * 24);
+        $hash = hash('sha255', $row['id']);
+        setcookie('hash', $hash, time() + 60 * 60 * 24);
+      }
+      if (hash('sha255', $row['id']) == $_SESSION['hash']) {
+        header("Location: admin.php");
+        die;
+      }
+      header("Location: ../index.php");
+      die;
+    }
+  }
+  $error = true;
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,11 +73,11 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-  <div class="login-clean" style="height: 500;">
-    <h2 class="text-center mb-2" style="height: 60px;margin-top: -55px;color: rgb(255,0,53);font-family: Allerta, sans-serif;">
+  <div class="login-clean" style="height: 800;">
+    <h2 class="text-center" style="height: 70px;margin-top: 20px; margin-bottom:20px;color: rgb(255,0,53);font-family: Allerta, sans-serif;">
       <strong>Login Form</strong>
     </h2>
-    <?php if (isset($login['error'])) : ?>
+    <?php if (isset($error)) : ?>
       echo "<script>
         alert('Username atau Password salah!');
         document.location.href = 'login.php';
@@ -53,14 +99,14 @@ if (isset($_POST['login'])) {
       <div class="form-group">
         <label for="remember-me"><span>Remember me</span> <span>
             <input id="remember-me" name="remember" type="checkbox"></span></label><br>
-        <input type="submit" name="login" class="btn btn-block btn-primary btn-md" data-bs-hover-animate="pulse" value="Login" style="background-color: rgb(255,0,53);">
+        <input type="submit" name="submit" class="btn btn-block btn-primary btn-md" data-bs-hover-animate="pulse" value="Login" style="background-color: rgb(255,0,53);">
       </div>
       <div id="register-link" class="text-right">
         <p class="mb-1">Belum punya akun?</p>
         <a href="registrasi.php">Register here</a>
       </div>
     </form>
-    <footer style="max-height: 1px; margin-top:-20px;">
+    <footer style="margin-top:85px;">
       <p class="copyright text-center" style="opacity: 0.7;filter: brightness(150%) contrast(38%);">Jee Elektronik © 2020</p>
     </footer>
   </div>
@@ -69,7 +115,6 @@ if (isset($_POST['login'])) {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/bs-animation.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

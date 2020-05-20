@@ -28,11 +28,11 @@ function query($query)
 
 function upload()
 {
-  $nama_file = $_FILES['gambar']['name'];
-  $tipe_file = $_FILES['gambar']['type'];
-  $ukuran_file = $_FILES['gambar']['size'];
-  $error = $_FILES['gambar']['error'];
-  $tmp_file = $_FILES['gambar']['tmp_name'];
+  $nama_file = $_FILES['foto']['name'];
+  $tipe_file = $_FILES['foto']['type'];
+  $ukuran_file = $_FILES['foto']['size'];
+  $error = $_FILES['foto']['error'];
+  $tmp_file = $_FILES['foto']['tmp_name'];
 
   //ketika tidak ada gambar yang dipilih
   if ($error == 4) {
@@ -75,7 +75,7 @@ function upload()
   $nama_file_baru = uniqid();
   $nama_file_baru .= '.';
   $nama_file_baru .= $ekstensi_file;
-  move_uploaded_file($tmp_file, 'img/' . $nama_file_baru);
+  move_uploaded_file($tmp_file, '../assets/img/' . $nama_file_baru);
 
   return $nama_file_baru;
 }
@@ -85,22 +85,22 @@ function tambah($data)
 {
   $conn = koneksi();
 
-  $nama = htmlspecialchars($data['nama']);
-  $nrp = htmlspecialchars($data['nrp']);
-  $email = htmlspecialchars($data['email']);
-  $jurusan = htmlspecialchars($data['jurusan']);
+  $seri = htmlspecialchars($data['seri']);
+  $spesifikasi = htmlspecialchars($data['spesifikasi']);
+  $fitur = htmlspecialchars($data['fitur']);
+  $harga = htmlspecialchars($data['harga']);
   // $gambar = htmlspecialchars($data['gambar']);
 
   //upload gambar
-  $gambar = upload();
-  if (!$gambar) {
+  $foto = upload();
+  if (!$foto) {
     return false;
   }
 
   $query = "INSERT INTO
-            mahasiswa
+            elektronik
             VALUES
-            (null, '$nama', '$nrp', '$email', '$jurusan', '$gambar')
+            (null, '$foto', '$seri', '$spesifikasi', '$fitur', '$harga' )
             ";
   mysqli_query($conn, $query);
   echo mysqli_error($conn);
@@ -112,13 +112,13 @@ function hapus($id)
   $conn = koneksi();
 
   //menghapus  gambar di folder img
-  $mhs = query("SELECT * FROM mahasiswa WHERE id = $id");
-  if ($mhs['gambar'] != 'nophoto.jpg') {
-    unlink('img/' . $mhs['gambar']);
+  $row = query("SELECT * FROM elektronik WHERE id = $id");
+  if ($row['foto'] != 'nophoto.jpg') {
+    unlink('../assets/img/' . $row['foto']);
   }
 
 
-  mysqli_query($conn, "DELETE FROM mahasiswa WHERE id = $id") or die(mysqli_error($conn));
+  mysqli_query($conn, "DELETE FROM elektronik WHERE id = $id") or die(mysqli_error($conn));
 
   return mysqli_affected_rows($conn);
 }
@@ -128,28 +128,28 @@ function ubah($data)
   $conn = koneksi();
 
   $id = $data['id'];
-  $nama = htmlspecialchars($data['nama']);
-  $nrp = htmlspecialchars($data['nrp']);
-  $email = htmlspecialchars($data['email']);
-  $jurusan = htmlspecialchars($data['jurusan']);
-  $gambar_lama = htmlspecialchars($data['gambar_lama']);
+  $seri = htmlspecialchars($data['seri']);
+  $spesifikasi = htmlspecialchars($data['spesifikasi']);
+  $fitur = htmlspecialchars($data['fitur']);
+  $harga = htmlspecialchars($data['harga']);
+  $foto_lama = htmlspecialchars($data['foto_lama']);
 
-  $gambar = upload();
-  if (!$gambar) {
+  $foto = upload();
+  if (!$foto) {
     return false;
   }
 
-  if ($gambar == 'nophoto.jpg') {
-    $gambar = $gambar_lama;
+  if ($foto == 'nophoto.jpg') {
+    $foto = $foto_lama;
   }
 
-  $query = "UPDATE mahasiswa SET  
-            nama = '$nama',
-            nrp = '$nrp',
-            email = '$email',
-            jurusan = '$jurusan',
-            gambar = '$gambar'
-            WHERE id = $id ";
+  $query = "UPDATE elektronik SET  
+            seri = '$seri',
+            spesifikasi = '$spesifikasi',
+            fitur = '$fitur',
+            harga = '$harga',
+            foto = '$foto'
+            WHERE id = '$id' ";
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
 }
@@ -188,7 +188,7 @@ function login($data)
       // set session
       $_SESSION['login'] = true;
 
-      header("Location: index.php");
+      header("Location: admin.php");
       exit;
     }
   }
